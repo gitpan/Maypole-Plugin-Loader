@@ -1,0 +1,43 @@
+NAME
+    Maypole::Plugin::Loader - Require all available model class modules
+
+SYNOPSIS
+        package BeerDB;
+
+        use Maypole::Application qw(Loader);
+
+        BeerDB->setup('dbi:Pg:dbname=beerdb', 'myuser', 'mypass');
+
+DESCRIPTION
+    Requires all available model class modules for you.
+
+    So you can just do this:
+
+        package BeerDB;
+
+        use Maypole::Application qw(Loader);
+
+        BeerDB->setup('dbi:Pg:dbname=beerdb', 'myuser', 'mypass');
+
+    Instead of this:
+
+        package BeerDB;
+
+        use Maypole::Application;
+
+        BeerDB->setup('dbi:Pg:dbname=beerdb', 'myuser', 'mypass');
+        BeerDB::Brewery->require;
+        BeerDB::Beer->require;
+        BeerDB::Handpump->require;
+        BeerDB::Pub->require;
+
+AUTHOR
+    Sebastian Riedel, "sri@oook.de"
+
+THANK YOU
+    Max Maischein
+
+LICENSE
+    This library is free software. You can redistribute it and/or modify it
+    under the same terms as perl itself.
+
